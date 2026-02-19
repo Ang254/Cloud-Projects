@@ -78,7 +78,7 @@ Launched EC2 instances in private subnets and installed mariadb web server.
 
 Configured Application Load Balancer and attached Target Group.
 
-![ALB Healthy](screenshots/alb-target-healthy.png)
+![ALB Healthy](screenshots/.png)
 
 ---
 
