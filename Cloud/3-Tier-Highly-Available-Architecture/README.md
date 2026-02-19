@@ -60,8 +60,9 @@ Configured separate security groups for:
 - Web servers
 - Application servers
 - Database servers
+- Load balancer
 
-![App Security Group](screenshots/securitygroups.png)
+![App Security Group](screenshots/sg.png)
 
 ---
 
