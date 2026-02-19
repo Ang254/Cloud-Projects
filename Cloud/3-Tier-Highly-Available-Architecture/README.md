@@ -11,7 +11,7 @@ The system separates the User/Presentation Tier, Application Tier, and Data Tier
 
 # Architecture Diagram
 
-![Architecture Diagram](scr)
+![Architecture Diagram](screenshots/Architecture diagram.png)
 
 ---
 
