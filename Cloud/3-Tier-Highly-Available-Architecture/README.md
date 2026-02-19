@@ -48,7 +48,7 @@ Configured Internet Gateway and updated Public Route Table.
 
 Created NAT Gateway in Public Subnet and updated Private Route Table.
 
-![NAT Gateway](screenshots/NGW.png)()
+![NAT Gateway](screenshots/NGW.png)
 
 ---
 
@@ -56,11 +56,12 @@ Created NAT Gateway in Public Subnet and updated Private Route Table.
 
 Configured separate security groups for:
 
-- Load Balancer
-- Application Servers
-- Database
+- Bastion host
+- Web servers
+- Application servers
+- Database servers
 
-![App Security Group](screenshots/app-sg.png)
+![App Security Group](screenshots/securitygroups.png)
 
 ---
 
