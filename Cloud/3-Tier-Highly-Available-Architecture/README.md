@@ -101,33 +101,33 @@ Deployed MySQL RDS instance with Multi-AZ enabled.
 # Challenges Faced
 # Challenge 1: Database Access Issue on Amazon Linux 2023
 While configuring the Application Tier EC2 instance, installing the MySQL client using:
-sudo yum install mysql
+-sudo yum install mysql
 resulted in an error.
 
 Amazon Linux 2023 does not use yum as its default package manager. Instead, it uses dnf. Because of this, the required MySQL client package could not be installed using the expected command.
 
 Solution
 Installed the MariaDB client using the correct package manager:
-sudo dnf install mariadb105
+-sudo dnf install mariadb105
 After installation, successfully connected to the RDS instance using:
-mysql -h <RDS-endpoint> -u <username> -p
+-mysql -h <RDS-endpoint> -u <username> -p
 This resolved the database connectivity issue.
 
 Key Learning
-Amazon Linux 2023 uses dnf instead of yum
-Always verify the operating system version before installing packages
+-Amazon Linux 2023 uses dnf instead of yum
+-Always verify the operating system version before installing packages
 
 # Challenge 2: AWS Free Tier Limitation – Multi-AZ RDS
 The architecture design required a Multi-AZ RDS deployment to achieve full high availability in the Data Tier.
 However, AWS Free Tier does not support Multi-AZ RDS instances. Enabling Multi-AZ requires a paid database instance.
 Due to Free Tier constraints:
-Only Single-AZ RDS could be deployed
-True database-level high availability could not be fully implemented
+-Only Single-AZ RDS could be deployed
+-True database-level high availability could not be fully implemented
 
 Key Learning
-Free Tier is suitable for learning but has architectural limitations
-Production-grade high availability requires Multi-AZ database deployment
-Budget constraints must be considered during architecture design
+-Free Tier is suitable for learning but has architectural limitations
+-Production-grade high availability requires Multi-AZ database deployment
+-Budget constraints must be considered during architecture design
 
 ---
 # High Availability Features
