@@ -101,14 +101,12 @@ Deployed MySQL RDS instance with Multi-AZ enabled.
 # Challenges Faced
 # Challenge 1: Database Access Issue on Amazon Linux 2023
 While configuring the Application Tier EC2 instance, installing the MySQL client using:
-- sudo yum install mysql
-resulted in an error.
+- sudo yum install mysql :resulted in an error.
 
 Amazon Linux 2023 does not use yum as its default package manager. Instead, it uses dnf. Because of this, the required MySQL client package could not be installed using the expected command.
 
-Solution
-Installed the MariaDB client using the correct package manager:
-- sudo dnf install mariadb105
+Solution: installed the MariaDB client using the correct package manager:
+- sudo dnf install mariadb105.
 After installation, successfully connected to the RDS instance using:
 - mysql -h <RDS-endpoint> -u <username> -p
 This resolved the database connectivity issue.
