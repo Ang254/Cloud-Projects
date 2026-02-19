@@ -65,11 +65,11 @@ Configured separate security groups for:
 
 ---
 
-# Step 6: Application Tier Deployment
+# Step 6: Creation of servers
 
-Launched EC2 instances in private subnets and installed Apache web server.
+Launched EC2 instances in private subnets and installed mariadb web server.
 
-![EC2 Running](screenshots/ec2-running.png)
+![EC2 Running](instances.png)
 
 ---
 
