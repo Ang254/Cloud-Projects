@@ -69,7 +69,7 @@ Configured separate security groups for:
 
 Launched EC2 instances in private subnets and installed mariadb web server.
 
-![EC2 Running](instances.png)
+![EC2 Running](screenshots/instances.png)
 
 ---
 
