@@ -92,9 +92,9 @@ Deployed MySQL RDS instance with Multi-AZ enabled.
 # Results
 Able to access the app server, appserver2 and database server from the bastion host
 Ping test also confirms reachability of the servers from the bastion host
-![Jump to Database server from Bastion host]()
+![Jump to Database server from Bastion host](screenshots/jumptoAppserver2)
 
-![Ping test from bastion host to App server]()
+![Ping test from bastion host to App server](screenshots/pingAppServer)
 
 # High Availability Features
 
