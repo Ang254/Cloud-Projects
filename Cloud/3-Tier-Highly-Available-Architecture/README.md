@@ -48,7 +48,7 @@ Configured Internet Gateway and updated Public Route Table.
 
 Created NAT Gateway in Public Subnet and updated Private Route Table.
 
-![NAT Gateway](screenshots/nat-gateway.png)
+![NAT Gateway](screenshots/NGW.png)
 
 ---
 
