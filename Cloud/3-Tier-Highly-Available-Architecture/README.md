@@ -78,7 +78,7 @@ Launched EC2 instances in private subnets and installed mariadb web server.
 
 Configured Application Load Balancer and attached Target Group.
 
-![ALB Healthy](screenshots/.png)
+![ALB Healthy](screenshots/elb.png)
 
 ---
 
@@ -86,7 +86,7 @@ Configured Application Load Balancer and attached Target Group.
 
 Deployed MySQL RDS instance with Multi-AZ enabled.
 
-![RDS Multi AZ](screenshots/rds-multiaz.png)
+![RDS Multi AZ](screenshots/rds.png)
 
 ---
 
