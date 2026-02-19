@@ -11,7 +11,7 @@ The system separates the User/Presentation Tier, Application Tier, and Data Tier
 
 # Architecture Diagram
 
-![Architecture Diagram](screenshots/Architecturediagram.png)
+![Architecture Diagram]()
 
 ---
 
@@ -19,7 +19,7 @@ The system separates the User/Presentation Tier, Application Tier, and Data Tier
 
 Created a VPC with CIDR block 10.0.0.0/16.
 
-![VPC Created](screenshots/vpc-created.png)
+![VPC Created](screenshots/VPC.png)
 
 ---
 
