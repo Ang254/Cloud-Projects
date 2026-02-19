@@ -40,7 +40,7 @@ Configured 6 subnets across 2 Availability Zones:
 Allocate elastic IP address
 Configured Internet Gateway and updated Public Route Table.
 
-![Public Route Table](screenshots/public-route-table.png)
+![Public Route Table](screenshots/PublicRouteTable.png)
 
 ---
 
@@ -48,7 +48,7 @@ Configured Internet Gateway and updated Public Route Table.
 
 Created NAT Gateway in Public Subnet and updated Private Route Table.
 
-![NAT Gateway](screenshots/NGW.png)
+![NAT Gateway](screenshots/NGW.png)()
 
 ---
 
