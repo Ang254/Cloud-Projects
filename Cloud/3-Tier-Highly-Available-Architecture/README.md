@@ -27,16 +27,17 @@ Created a VPC with CIDR block 10.0.0.0/16.
 
 Configured 6 subnets across 2 Availability Zones:
 
-- 2 Public Subnets
-- 2 Private Application Subnets
-- 2 Private Database Subnets
+- 2 Public Subnets: PublicSubnet1, PublicSubnet5
+- 2 Private Application Subnets: PrivateAppSubnet2, PrivateAppSubnet6
+- 2 Private Database Subnets: PrivateDBSubnet3, PrivateDBSubnet4
 
-![Subnets](screenshots/subnets.png)
+![Subnets](screenshots/Subnets.png)
 
 ---
 
 # Step 3: Internet Gateway & Route Table
 
+Allocate elastic IP address
 Configured Internet Gateway and updated Public Route Table.
 
 ![Public Route Table](screenshots/public-route-table.png)
