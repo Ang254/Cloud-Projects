@@ -56,6 +56,8 @@ Associated public subnets with public route table as well as private subnets wit
 
 Launched EC2 instances in private subnets.
 
+![Architecture Diagram](screenshots/.png)
+
 ## Step 5: Create Target Group
 
 Created a Target Group with the following configuration:
