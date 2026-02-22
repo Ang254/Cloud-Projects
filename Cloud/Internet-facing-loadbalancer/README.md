@@ -23,11 +23,25 @@ Created a VPC with the following components:
 - Public Subnets (for Load Balancer)
 - Private Subnets (for Backend EC2 instances)
 
-Subnets were distributed across multiple Availability Zones to ensure high availability and fault tolerance.
+While the project was deployed in a single Availability Zone, in practice, subnets should be distributed across multiple Availability Zones to achieve high availability and fault tolerance.
 
 ---
 
-## Step 2: Launch Backend EC2 Instances
+## Step 2: Security Group Configuration
+
+Configured separate security groups to enforce isolation and least privilege.
+
+Load Balancer Security Group
+- Allow HTTP (Port 80) from 0.0.0.0/0
+Acts as the public entry point to the application
+
+Backend EC2 Security Group
+
+Allow HTTP (Port 80) ONLY from the Load Balancer Security Group and SSH (Port 22)
+No direct public internet access
+Prevents direct access to backend servers
+
+## Step 3: Launch Backend EC2 Instances
 
 Launched EC2 instances in private subnets.
 
@@ -38,41 +52,18 @@ sudo dnf install httpd -y
 sudo systemctl start httpd
 sudo systemctl enable httpd
 
-Step 3: Security Group Configuration
 
-Configured separate security groups to enforce isolation and least privilege.
 
-Load Balancer Security Group
-
-Allow HTTP (Port 80) from 0.0.0.0/0
-
-Acts as the public entry point to the application
-
-Backend EC2 Security Group
-
-Allow HTTP (Port 80) ONLY from the Load Balancer Security Group
-
-No direct public internet access
-
-Prevents direct access to backend servers
-
-Step 4: Create Target Group
+## Step 4: Create Target Group
 
 Created a Target Group with the following configuration:
-
-Target Type: Instance
-
-Protocol: HTTP
-
-Port: 80
-
-Health Check Path: /
-
-Registered backend EC2 instances to the Target Group.
-
+- Target Type: Instance
+- Protocol: HTTP
+- Port: 80
+- Registered backend EC2 instances to the Target Group.
 Health checks ensure traffic is routed only to healthy instances.
 
-Step 5: Create Internet-Facing Application Load Balancer
+## Step 5: Create Internet-Facing Application Load Balancer
 
 Created an Application Load Balancer with:
 
