@@ -47,10 +47,10 @@ Launched EC2 instances in private subnets.
 
 Installed Apache web server:
 
-```bash
+bash
 sudo dnf install httpd -y
 sudo systemctl start httpd
-sudo systemctl enable httpd```
+sudo systemctl enable httpd
 
 
 
