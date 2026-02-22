@@ -56,7 +56,7 @@ Associated public subnets with public route table as well as private subnets wit
 
 Launched EC2 instances in private subnets.
 
-![Architecture Diagram](screenshots/.png)
+![Architecture Diagram](screenshots/ec2.png)
 
 ## Step 5: Create Target Group
 
@@ -135,11 +135,14 @@ Steps taken:
 
 Use this bastion host to SSH into private backend instances for verification and configuration.
 
-# Example: SSH from local machine to bastion host
+Example: SSH from local machine to bastion host
+
 ssh -i mykey.pem ec2-user@<bastion-public-ip>
 
-# Then SSH from bastion to private instance
+Then SSH from bastion to private instance
+
 ssh -i mykey.pem ec2-user@<private-instance-ip>
+
 2. Backend Instance Verification and Fixes
 
 On each private backend instance, the following were checked and configured:
