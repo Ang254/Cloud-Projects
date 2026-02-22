@@ -130,7 +130,7 @@ A bastion host is an EC2 instance in a public subnet with a public IP that allow
 
 Steps taken:
 
-- Launch an EC2 instance in the public subnet.
+- Launch an EC2 instance in the public subnet, named testing.
 - Assign a security group allowing SSH (port 22).
 
 Use this bastion host to SSH into private backend instances for verification and configuration.
