@@ -85,10 +85,10 @@ Traffic was successfully distributed across backend instances, confirming:
 - Health checks functioning correctly
 - Secure communication between Load Balancer and backend servers
 
-Request routed to server 1
+# Request routed to server 1
 ![Architecture Diagram](screenshots/Backend1.png)
 
-Request routed to server 2
+# Request routed to server 2
 ![Architecture Diagram](screenshots/Backend2.png)
 
 # High Availability Features
