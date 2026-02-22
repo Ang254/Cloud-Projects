@@ -85,6 +85,12 @@ Traffic was successfully distributed across backend instances, confirming:
 - Health checks functioning correctly
 - Secure communication between Load Balancer and backend servers
 
+Request routed to server 1
+![Architecture Diagram](screenshots/Backend1.png)
+
+Request routed to server 2
+![Architecture Diagram](screenshots/Backend2.png)
+
 # High Availability Features
 
 Internet-facing Application Load Balancer
@@ -111,6 +117,8 @@ Private subnet isolation for backend instances
 Bastion Host and Backend Instance Configuration
 
 During the deployment of the application behind the Application Load Balancer (ALB), the ALB marked the target instances as unhealthy, resulting in 502 Bad Gateway errors. This occurred because the backend instances were in a private subnet, making them inaccessible directly from the internet for verification and troubleshooting.
+
+![Architecture Diagram](screenshots/502.png)
 
 To resolve this, a bastion host was deployed and backend instances were configured appropriately.
 
