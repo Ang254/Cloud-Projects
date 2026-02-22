@@ -45,16 +45,6 @@ Prevents direct access to backend servers
 
 Launched EC2 instances in private subnets.
 
-Installed Apache web server:
-
-bash
-sudo dnf install httpd -y
-sudo systemctl start httpd
-sudo systemctl enable httpd
-
-
-
-
 ## Step 4: Create Target Group
 
 Created a Target Group with the following configuration:
@@ -69,16 +59,12 @@ Health checks ensure traffic is routed only to healthy instances.
 Created an Application Load Balancer with:
 
 Scheme: Internet-facing
-
 Listener: HTTP (Port 80)
-
 Attached to Public Subnets
-
 Associated with the created Target Group
-
 The Load Balancer distributes incoming traffic across multiple backend instances.
 
-Step 6: Verify Load Balancing
+## Step 6: Verify Load Balancing
 
 Accessed the DNS name of the Load Balancer from a web browser.
 
