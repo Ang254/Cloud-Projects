@@ -61,7 +61,7 @@ This project demonstrates how to segregate management and application traffic in
 - Created security group allowing ssh traffic
 ![sg](screenshots/P3.png)
 
-5. **Create EC2 Instances**
+5. **Create EC2 Instances in Prod-VPC**
 - Created a bastion host in the public subnet of VPC-Prod and added security group created.
 - Created a private instance with an additional network interface in the private subnet of VPC-Prod and added security group created.
 
@@ -70,3 +70,32 @@ This project demonstrates how to segregate management and application traffic in
 - Tested ssh into private instance from bastion host and only one IP was able to connect to private instance
 
 ![sshToPrivate](screenshots/P3.png)
+
+6. **Create VPC Peering Connection**
+- Created a VPC Peering between PROD-VPC and DEV-VPC by selecting Requestor and Accepter VPC
+- Once Peering is created successfully, accepted the peering request
+  
+![Peering](screenshots/P3.png)
+
+- Updated route tables to include peering connection with destination of CIDR range of the other VPC
+
+7. **Create EC2 Instances in Dev-VPC**
+- Created a public instance in the public subnet of VPC-Dev and added security group allowing SSH.
+
+8.**Testing VPC Peering connection** 
+To verify that the VPC peering connection was functioning correctly, the following tests were performed:
+
+- Successfully connected from the bastion host in VPC-PROD to an instance in the public subnet of VPC-DEV.
+- Installed and configured an Apache web server on the DEV instance to serve sample content.
+- Updated security groups to allow HTTP (port 80) traffic where required.
+- From the bastion host, accessed the Apache `index.html` page hosted in VPC-DEV.
+  
+![HTTP-success](screenshots/P3.png)
+
+The successful display of the sample web page confirmed that:
+
+- Routing between the two VPCs was correctly configured.
+- The VPC peering connection was active and functioning.
+- Security group rules allowed the intended cross-VPC communication.
+- Instances in separate VPCs could securely communicate over private networking.
+![Testindex](screenshots/P3.png)
