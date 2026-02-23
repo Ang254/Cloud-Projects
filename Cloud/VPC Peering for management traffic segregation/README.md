@@ -69,13 +69,13 @@ This project demonstrates how to segregate management and application traffic in
   
 - Tested ssh into private instance from bastion host and only one IP was able to connect to private instance
 
-![sshToPrivate](screenshots/sshprivate.png)
+![sshToPrivate](screenshots/ssh-IP1.png)
 
 6. **Create VPC Peering Connection**
 - Created a VPC Peering between PROD-VPC and DEV-VPC by selecting Requestor and Accepter VPC
 - Once Peering is created successfully, accepted the peering request
   
-![Peering](screenshots/P3.png)
+![Peering](screenshots/Peering.png)
 
 - Updated route tables to include peering connection with destination of CIDR range of the other VPC
 
@@ -90,7 +90,7 @@ To verify that the VPC peering connection was functioning correctly, the followi
 - Updated security groups to allow HTTP (port 80) traffic where required.
 - From the bastion host, accessed the Apache `index.html` page hosted in VPC-DEV.
   
-![HTTP-success](screenshots/P3.png)
+![HTTP-success](screenshots/Comm.png)
 
 The successful display of the sample web page confirmed that:
 
@@ -98,4 +98,4 @@ The successful display of the sample web page confirmed that:
 - The VPC peering connection was active and functioning.
 - Security group rules allowed the intended cross-VPC communication.
 - Instances in separate VPCs could securely communicate over private networking.
-![Testindex](screenshots/P3.png)
+![Testindex](screenshots/Web.png)
