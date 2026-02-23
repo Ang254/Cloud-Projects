@@ -59,7 +59,6 @@ This project demonstrates how to segregate management and application traffic in
 
 4. **Create Security group**
 - Created security group allowing ssh traffic
-![sg](screenshots/P3.png)
 
 5. **Create EC2 Instances in Prod-VPC**
 - Created a bastion host in the public subnet of VPC-Prod and added security group created.
