@@ -49,3 +49,24 @@ This project demonstrates how to segregate management and application traffic in
 1. **Create VPCs**
 ![VPC Diagram](screenshots/P3.png)
 
+2. **Create Subnets**
+![Subnets](screenshots/P3.png)
+
+3. **Create Internet gateways and Route tables**
+- Created and attached IGWs to their VPCs
+- Added routes to IGW in the route tables and associated the respective subnets
+![RouteTable](screenshots/P3.png)
+
+4. **Create Security group**
+- Created security group allowing ssh traffic
+![sg](screenshots/P3.png)
+
+5. **Create EC2 Instances**
+- Created a bastion host in the public subnet of VPC-Prod and added security group created.
+- Created a private instance with an additional network interface in the private subnet of VPC-Prod and added security group created.
+
+![PrivateEC2](screenshots/P3.png)
+  
+- Tested ssh into private instance from bastion host and only one IP was able to connect to private instance
+
+![sshToPrivate](screenshots/P3.png)
