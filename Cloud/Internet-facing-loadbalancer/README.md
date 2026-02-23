@@ -56,7 +56,7 @@ Associated public subnets with public route table as well as private subnets wit
 
 Launched EC2 instances in private subnets.
 
-![Architecture Diagram](screenshots/ec2.png)
+![Backend Instances](screenshots/ec2.png)
 
 ## Step 5: Create Target Group
 
@@ -88,10 +88,10 @@ Traffic was successfully distributed across backend instances, confirming:
 - Secure communication between Load Balancer and backend servers
 
 # Request routed to server 1
-![Architecture Diagram](screenshots/Backend1.png)
+![Server1](screenshots/Backend1.png)
 
 # Request routed to server 2
-![Architecture Diagram](screenshots/Backend2.png)
+![Server2](screenshots/Backend2.png)
 
 # High Availability Features
 
@@ -120,7 +120,7 @@ Bastion Host and Backend Instance Configuration
 
 During the deployment of the application behind the Application Load Balancer (ALB), the ALB marked the target instances as unhealthy, resulting in 502 Bad Gateway errors. This occurred because the backend instances were in a private subnet, making them inaccessible directly from the internet for verification and troubleshooting.
 
-![Architecture Diagram](screenshots/502.png)
+![Issue](screenshots/502.png)
 
 To resolve this, a bastion host was deployed and backend instances were configured appropriately.
 
