@@ -3,12 +3,12 @@
 
 This project demonstrates the end-to-end workflow for building, training, deploying, and evaluating a binary classification machine learning model on Amazon SageMaker. The model predicts whether a customer will subscribe to a term deposit based on marketing campaign data.
 
-We use the Bank Marketing Dataset, preprocess it, train an XGBoost model, deploy it as a SageMaker endpoint, and evaluate its performance on test data.
+Used the Bank Marketing Dataset, preprocess it, train an XGBoost model, deploy it as a SageMaker endpoint, and evaluate its performance on test data.
 
 # Project Steps
-1. Import Libraries and Define Environment
+1. **Import Libraries and Define Environment**
 
-We begin by importing the required Python libraries and defining the SageMaker execution environment:
+Began by importing the required Python libraries and defining the SageMaker execution environment:
 
 import boto3, sagemaker, urllib.request, numpy as np, pandas as pd, os
 from sagemaker import get_execution_role
