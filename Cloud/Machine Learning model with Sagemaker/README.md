@@ -9,6 +9,7 @@ Used the Bank Marketing Dataset, preprocess it, train an XGBoost model, deploy i
 1. **Create Amazon Sagemaker Notebook Instance**
 
 Select Notebook instances, then choose Create notebook instance
+![Notebook Instance](screenshots/instance.png.png)
 
 2.  **Import Libraries and Define Environment**
    
@@ -19,54 +20,35 @@ Began by importing the required Python libraries and defining the SageMaker exec
 
 Define IAM role and session variables
 
+![Environment](screenshots/notbook.png)
 
-# Retrieve the XGBoost container URI
+3. **Create S3 bucket**
+Create the S3 bucket to store your data.
+
+Provides storage for training data, model artifacts, and predictions. All training and output data is stored in Amazon S3.
+
+![Bucket](screenshots/upload-s3.png)
+
+3. **Retrieve the XGBoost container URI**
 xgboost_container = sagemaker.image_uris.retrieve("xgboost", my_region, "latest")
 
 Purpose: Sets up the SageMaker session, IAM role, and identifies the XGBoost container for training.
 
-2. Create S3 Bucket
+4. **Download and Load Data**
 
-All training and output data is stored in Amazon S3:
-
-bucket_name = 'your-unique-s3-bucket-name'
-s3 = boto3.resource('s3')
-
-if my_region == 'us-east-1':
-    s3.create_bucket(Bucket=bucket_name)
-else:
-    s3.create_bucket(
-        Bucket=bucket_name,
-        CreateBucketConfiguration={'LocationConstraint': my_region}
-    )
-
-Purpose: Provides storage for training data, model artifacts, and predictions.
-
-3. Download and Load Data
-
-We download the Bank Marketing dataset and load it into a Pandas DataFrame:
-
-urllib.request.urlretrieve(
-    "https://d1.awsstatic.com/tmt/build-train-deploy-machine-learning-model-sagemaker/bank_clean.27f01fbbdf43271788427f3682996ae29ceca05d.csv",
-    "bank_clean.csv"
-)
-
-model_data = pd.read_csv("bank_clean.csv", index_col=0)
+Downloaded the Bank Marketing dataset and loaded it into a Pandas DataFrame:
 
 Purpose: Prepares raw data for preprocessing and training.
 
-4. Shuffle and Split Data
+![Loaded data](screenshots/download-loaddata.png)
 
-We randomly shuffle the dataset and split it into training (70%) and test (30%) sets:
+5. **Shuffle and Split Data**
 
-train_data, test_data = np.split(
-    model_data.sample(frac=1, random_state=1729),
-    [int(0.7 * len(model_data))]
-)
-
-Training data is used to fit the XGBoost model.
+Randomly shuffle the dataset and split it into training (70%) and test (30%) sets:
 
 Test data is used to evaluate how well the model generalizes to unseen data.
+
+![Prepping Data](screenshots/prepdata.png)
 
 5. Prepare Training Data for XGBoost
 
