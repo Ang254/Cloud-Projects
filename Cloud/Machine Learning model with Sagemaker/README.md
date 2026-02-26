@@ -27,7 +27,7 @@ Create the S3 bucket to store your data.
 
 Provides storage for training data, model artifacts, and predictions. All training and output data is stored in Amazon S3.
 
-![Bucket](screenshots/upload-s3.png)
+![Bucket](screenshots/bucketcreate.png)
 
 4. **Download and Load Data**
 
@@ -57,6 +57,10 @@ Stores training CSV in S3 for SageMaker to access.
 
 Launches a training job on ml.m4.xlarge and optimizes model parameters using gradient-based optimization.
 
+![Prep-data](screenshots/prepdata.png)
+
+![S3](screenshots/upload-s3.png)
+
 8. **Train the Model**
 xgb.fit({'train': s3_input_train})
 
@@ -75,57 +79,38 @@ Define the XGBoost estimator and hyperparameters:
 
 Converts test features into an array for model inference.
 
-predictions_array contains the predicted probabilities of a customer subscribing.
+Predictions_array contains the predicted probabilities of a customer subscribing.
 
-11. Evaluate Model Performance
-import numpy as np
-import pandas as pd
+![Predictions](screenshots/predict.png)
 
-threshold = 0.5
-predicted_labels = (predictions_array >= threshold).astype(int)
-
-cm = pd.crosstab(
-    index=test_data['y_yes'],
-    columns=predicted_labels,
-    rownames=['Observed'],
-    colnames=['Predicted']
-)
-
-tn = cm.iloc[0,0]; fn = cm.iloc[1,0]; tp = cm.iloc[1,1]; fp = cm.iloc[0,1]
-accuracy = (tp+tn)/(tp+tn+fp+fn) * 100
-
-print("Overall Classification Rate:", round(accuracy,2), "%")
-print(cm)
-
-Purpose: Compares actual vs predicted outcomes using a confusion matrix.
+11. **Evaluate Model Performance**
+Compares actual vs predicted outcomes using a confusion matrix.
 
 Outcome: Measures accuracy, precision, and recall of the model.
 
-12. Cleanup (Optional but Recommended)
+![Evaluate](screenshots/evaluate.png)
+
+12. **Cleanup**
 
 After evaluation, delete the endpoint to stop charges:
 
 xgb_predictor.delete_endpoint()
-Key Learnings
+
+SageMaker endpoints incur cost until deleted, so cleanup is crucial.
+
+# Key Learnings
 
 SageMaker simplifies end-to-end ML workflow:
-
-Data preparation
-
-Model training
-
-Deployment
-
-Prediction
-
-Evaluation
+- Data preparation
+- Model training
+- Deployment
+- Prediction
+- Evaluation
 
 XGBoost is effective for binary classification tasks.
 
 Using thresholds allows tuning precision vs recall for business objectives.
 
-SageMaker endpoints incur cost until deleted, so cleanup is crucial.
-
-References
+# References
 
 https://docs.aws.amazon.com/sagemaker/latest/dg/gs-setup-working-env.html
