@@ -6,21 +6,19 @@ This project demonstrates the end-to-end workflow for building, training, deploy
 Used the Bank Marketing Dataset, preprocess it, train an XGBoost model, deploy it as a SageMaker endpoint, and evaluate its performance on test data.
 
 # Project Steps
-1. **Import Libraries and Define Environment**
+1. **Create Amazon Sagemaker Notebook Instance**
+
+Select Notebook instances, then choose Create notebook instance
+
+2.  **Import Libraries and Define Environment**
+   
+In Jupyter, choose conda_python3 and in a new code cell on your Jupyter notebook, copy and paste the following code and
+choose Run.
 
 Began by importing the required Python libraries and defining the SageMaker execution environment:
 
-import boto3, sagemaker, urllib.request, numpy as np, pandas as pd, os
-from sagemaker import get_execution_role
-from sagemaker.serializers import CSVSerializer
-import matplotlib.pyplot as plt
-from IPython.display import display, Image
-from time import gmtime, strftime
+Define IAM role and session variables
 
-# Define IAM role and session variables
-role = get_execution_role()
-prefix = 'sagemaker/DEMO-xgboost-dm'
-my_region = boto3.session.Session().region_name
 
 # Retrieve the XGBoost container URI
 xgboost_container = sagemaker.image_uris.retrieve("xgboost", my_region, "latest")
