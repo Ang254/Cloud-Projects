@@ -29,11 +29,6 @@ Provides storage for training data, model artifacts, and predictions. All traini
 
 ![Bucket](screenshots/upload-s3.png)
 
-3. **Retrieve the XGBoost container URI**
-xgboost_container = sagemaker.image_uris.retrieve("xgboost", my_region, "latest")
-
-Purpose: Sets up the SageMaker session, IAM role, and identifies the XGBoost container for training.
-
 4. **Download and Load Data**
 
 Downloaded the Bank Marketing dataset and loaded it into a Pandas DataFrame:
@@ -48,72 +43,35 @@ Randomly shuffle the dataset and split it into training (70%) and test (30%) set
 
 Test data is used to evaluate how well the model generalizes to unseen data.
 
-![Prepping Data](screenshots/prepdata.png)
+![Prepping Data](screenshots/shuffle.png)
 
-5. Prepare Training Data for XGBoost
+6. **Set up the Amazon SageMaker session**
+   
+Create an instance of the XGBoost model (an estimator), and define the model’s hyperparameters
 
-XGBoost requires the target column to be first and no header row in the CSV:
+Sets up the SageMaker session, IAM role, and identifies the XGBoost container for training.
 
-pd.concat(
-    [train_data['y_yes'], train_data.drop(['y_no','y_yes'], axis=1)],
-    axis=1
-).to_csv('train.csv', index=False, header=False)
+7. **Upload Training Data to S3**
+ 
+Stores training CSV in S3 for SageMaker to access.
 
-Purpose: Formats data for SageMaker’s prebuilt XGBoost algorithm.
+Launches a training job on ml.m4.xlarge and optimizes model parameters using gradient-based optimization.
 
-6. Upload Training Data to S3
-boto3.Session().resource('s3') \
-    .Bucket(bucket_name) \
-    .Object(os.path.join(prefix, 'train/train.csv')) \
-    .upload_file('train.csv')
-
-Purpose: Stores training CSV in S3 for SageMaker to access.
-
-7. Configure SageMaker Estimator
-
-We define the XGBoost estimator and hyperparameters:
-
-sess = sagemaker.Session()
-
-xgb = sagemaker.estimator.Estimator(
-    image_uri=xgboost_container,
-    role=role,
-    instance_count=1,
-    instance_type='ml.m4.xlarge',
-    output_path=f's3://{bucket_name}/{prefix}/output',
-    sagemaker_session=sess
-)
-
-xgb.set_hyperparameters(
-    max_depth=5,
-    eta=0.2,
-    gamma=4,
-    min_child_weight=6,
-    subsample=0.8,
-    objective='binary:logistic',
-    num_round=100
-)
-
-Hyperparameters control model complexity, learning rate, and regularization.
-
-8. Train the Model
+8. **Train the Model**
 xgb.fit({'train': s3_input_train})
 
-Purpose: Launches a training job on ml.m4.xlarge and optimizes model parameters using gradient-based optimization.
+Launches a training job on ml.m4.xlarge and optimizes model parameters using gradient-based optimization.
 
-9. Deploy the Model
-xgb_predictor = xgb.deploy(
-    initial_instance_count=1,
-    instance_type='ml.m4.xlarge'
-)
+![Training](screenshots/train.png)
 
-Purpose: Creates a real-time endpoint for making predictions.
+9. **Deploy the Model and configure SageMaker Estimator**
+Create a real-time endpoint for making predictions.
 
-10. Make Predictions on Test Data
-test_data_array = test_data.drop(['y_no','y_yes'], axis=1).values
-xgb_predictor.serializer = CSVSerializer()
-predictions = xgb_predictor.predict(test_data_array).decode('utf-8')
-predictions_array = np.fromstring(predictions, sep=',')
+Define the XGBoost estimator and hyperparameters:
+
+![Estimator](screenshots/estimator.png)
+
+10. **Make Predictions on Test Data**
 
 Converts test features into an array for model inference.
 
