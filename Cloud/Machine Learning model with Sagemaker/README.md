@@ -1,4 +1,4 @@
-## Bank Marketing Prediction using Amazon SageMaker XGBoost ##
+# Bank Marketing Prediction using Amazon SageMaker XGBoost #
 # Project Overview
 
 This project demonstrates the end-to-end workflow for building, training, deploying, and evaluating a binary classification machine learning model on Amazon SageMaker. The model predicts whether a customer will subscribe to a term deposit based on marketing campaign data.
