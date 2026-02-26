@@ -9,7 +9,7 @@ Used the Bank Marketing Dataset, preprocess it, train an XGBoost model, deploy i
 1. **Create Amazon Sagemaker Notebook Instance**
 
 Select Notebook instances, then choose Create notebook instance
-![Notebook Instance](screenshots/instance.png.png)
+![Notebook Instance](screenshots/instance.png)
 
 2.  **Import Libraries and Define Environment**
    
