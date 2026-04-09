@@ -71,7 +71,9 @@ Once restoration is complete:
 3. Object remains available for the specified restore duration  
 
 After this period, the object returns to archived state.
+## Object accessible
 
+![Access to Object](screenshots/FileAccessed.png)
 ---
 
 ## Key Features
