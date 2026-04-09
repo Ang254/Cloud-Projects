@@ -62,6 +62,11 @@ Archived objects are not immediately accessible.
 ![Status of restored Object](screenshots/RestoredStatus.png)
 ---
 
+## Restoration status
+
+![Status of restoration](screenshots/Status.png)
+---
+
 ## Step 5: Access Restored Object
 
 Once restoration is complete:
