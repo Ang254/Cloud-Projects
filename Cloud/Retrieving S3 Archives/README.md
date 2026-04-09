@@ -57,7 +57,7 @@ Archived objects are not immediately accessible.
 
 4. Submit restore request  
 5. After initiating restore, check object status
-## Object restore status
+## Object restore request status
 
 ![Status of restored Object](screenshots/RestoredStatus.png)
 ---
