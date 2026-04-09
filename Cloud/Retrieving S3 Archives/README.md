@@ -6,7 +6,7 @@
 
 This project demonstrates how to retrieve archived objects stored in Amazon S3 using the AWS Management Console.
 
-The objective was to restore data from archival storage classes such as Glacier Flexible Retrieval and Glacier Deep Archive, making it temporarily accessible for download and use.
+The objective was to restore data from archival storage classes such as Glacier Deep Archive, making it temporarily accessible for download and use.
 
 ---
 
@@ -15,8 +15,7 @@ The objective was to restore data from archival storage classes such as Glacier 
 The project involves:
 
 - Amazon S3 bucket storing archived objects  
-- Objects stored in archival storage classes:
-  - Glacier Flexible Retrieval  
+- Objects stored in archival storage classes:  
   - Glacier Deep Archive  
 - AWS Console used to initiate and monitor retrieval  
 
@@ -25,26 +24,25 @@ The project involves:
 ## Step 1: Upload Object to S3 Archive Storage
 
 1. Navigate to the S3 service in AWS Console  
-2. Create or select an existing bucket  
-3. Upload an object  
-4. During upload, select storage class:
-   - Glacier Flexible Retrieval  
-   - Glacier Deep Archive  
+2. Create or select an existing bucket.I created a bucket named glacier-accounting-archive-am.
+3. Upload an object and during upload, select storage class.I uploaded a file named cloudTest in storage class standard-IA and cloudTest1 in storage class Glacier deep archive.
 
 This ensures the object is stored in a low-cost archival tier.
+## Successful upload to S3
 
+![Upload to S3](screenshots/S3-upload.png)
 ---
 
 ## Step 2: Locate Archived Object
 
 1. Open the S3 bucket  
 2. Navigate to the object  
-3. Confirm the storage class shows:
-   - Glacier Flexible Retrieval or  
-   - Glacier Deep Archive  
+3. Confirm the storage class shows Glacier Deep Archive  
 
 Archived objects are not immediately accessible.
+## Inaccessible achived object
 
+![Archived Object](screenshots/ArchivedFile.png)
 ---
 
 ## Step 3: Initiate Restore Request
@@ -54,24 +52,14 @@ Archived objects are not immediately accessible.
 3. Configure restore options:
    - Restore duration (number of days the object will remain accessible)
    - Retrieval tier:
-     - Expedited (fast, higher cost)
      - Standard (moderate time)
      - Bulk (slow, lowest cost)  
 
 4. Submit restore request  
+5. After initiating restore, check object status
+## Object restore status
 
----
-
-## Step 4: Monitor Restore Status
-
-1. After initiating restore, check object status  
-2. Status will show:
-   - "Restore in progress"  
-3. Wait for retrieval to complete:
-   - Minutes (Expedited)
-   - Hours (Standard)
-   - Several hours to days (Bulk)
-
+![Status of restored Object](screenshots/RestoredStatus.png)
 ---
 
 ## Step 5: Access Restored Object
@@ -83,14 +71,6 @@ Once restoration is complete:
 3. Object remains available for the specified restore duration  
 
 After this period, the object returns to archived state.
-
----
-
-## Step 6: Verify Restore Expiration
-
-1. Check object metadata  
-2. Confirm restore expiry date  
-3. Plan retrieval duration based on usage requirements  
 
 ---
 
@@ -114,13 +94,24 @@ After this period, the object returns to archived state.
 
 ## Challenges Faced
 
-### Retrieval Delay
+### 1. Retrieval Delay
 
 Archived objects are not instantly accessible and require time for restoration depending on the selected retrieval tier.
 
-### Cost Considerations
+### 2. Cost Considerations
 
 Faster retrieval options (e.g., Expedited) incur higher costs, requiring careful selection based on urgency.
+### 3. Free Tier Limitation – Object Lock Not Supported
+
+While working with Amazon S3 buckets under the AWS Free Tier, it was not possible to enable **Object Lock**.
+
+#### Limitation
+
+- Object Lock must be enabled at bucket creation  
+- It requires versioning and additional configuration  
+- Certain configurations are restricted or not fully supported in Free Tier environments  
+
+As a result, implementing data immutability and compliance features (such as write-once-read-many policies) was not possible in this project.
 
 ---
 
