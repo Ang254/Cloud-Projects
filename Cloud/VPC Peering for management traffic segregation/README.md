@@ -55,6 +55,7 @@ This project demonstrates how to segregate management and application traffic in
 3. **Create Internet gateways and Route tables**
 - Created and attached IGWs to their VPCs
 - Added routes to IGW in the route tables and associated the respective subnets
+
 ![RouteTable](screenshots/rt.png)
 
 4. **Create Security group**
@@ -67,6 +68,7 @@ This project demonstrates how to segregate management and application traffic in
 ![PrivateEC2](screenshots/PrivateEC2.png)
   
 - Tested ssh into private instance from bastion host and only one IP was able to connect to private instance
+## Testing of ssh into private instance
 
 ![sshToPrivate](screenshots/ssh-IP1.png)
 
@@ -88,7 +90,8 @@ To verify that the VPC peering connection was functioning correctly, the followi
 - Installed and configured an Apache web server on the DEV instance to serve sample content.
 - Updated security groups to allow HTTP (port 80) traffic where required.
 - From the bastion host, accessed the Apache `index.html` page hosted in VPC-DEV.
-  
+
+## Successful access from bastion host
 ![HTTP-success](screenshots/Comm.png)
 
 The successful display of the sample web page confirmed that:
@@ -97,4 +100,6 @@ The successful display of the sample web page confirmed that:
 - The VPC peering connection was active and functioning.
 - Security group rules allowed the intended cross-VPC communication.
 - Instances in separate VPCs could securely communicate over private networking.
-![Testindex](screenshots/Web.png)
+
+## Successful upload to S3
+  ![Testindex](screenshots/Web.png)
