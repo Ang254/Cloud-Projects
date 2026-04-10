@@ -27,8 +27,9 @@ In this project:
 - Created an S3 bucket in AWS  
 - Uploaded an object while specifying a checksum algorithm (SHA-256)  
 - Retrieved and verified the checksum from object properties  
-- Cleaned up resources after testing  
-
+- Cleaned up resources after testing
+  
+![Checksum value Verification](screenshots/checksum.png)
 ---
 
 ## Key Configurations
