@@ -66,4 +66,6 @@ Locating checksum details in the AWS Console required navigating through object 
 $hash = (Get-FileHash CloudTest.txt -Algorithm SHA256).Hash
 [Convert]::ToBase64String([byte[]] -split ($hash -replace '..', '0x$& '))
 
-This allows comparison between locally generated checksum values and those stored in Amazon S3.
+
+
+his allows comparison between locally generated checksum values and those stored in Amazon S3.
