@@ -39,14 +39,6 @@ In this project:
 
 ---
 
-## Challenges Faced
-
-### Checksum Visibility
-
-Locating checksum details in the AWS Console required navigating through object properties, which was not immediately intuitive.
-
----
-
 ## Results
 
 - Successfully uploaded objects with checksum validation  
@@ -60,12 +52,9 @@ Locating checksum details in the AWS Console required navigating through object 
 - Checksums are critical for ensuring data integrity in cloud storage  
 - AWS S3 provides built-in mechanisms for integrity verification  
 - Understanding storage features improves reliability and security design    
-- Local checksum verification can be performed using PowerShell:
+- Local checksum verification can be performed using PowerShell,this allows comparison between locally generated checksum values and those stored in Amazon S3:
 
 ```powershell
 $hash = (Get-FileHash CloudTest.txt -Algorithm SHA256).Hash
 [Convert]::ToBase64String([byte[]] -split ($hash -replace '..', '0x$& '))
 
-
-
-his allows comparison between locally generated checksum values and those stored in Amazon S3.
