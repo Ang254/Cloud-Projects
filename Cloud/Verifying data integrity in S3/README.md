@@ -28,7 +28,7 @@ In this project:
 - Uploaded an object while specifying a checksum algorithm (SHA-256)  
 - Retrieved and verified the checksum from object properties  
 - Cleaned up resources after testing
-- 
+
 ## Checksum value verification
 ![Checksum value Verification](screenshots/checksum.png)
 ---
