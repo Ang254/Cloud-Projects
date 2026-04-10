@@ -68,7 +68,7 @@ This project demonstrates how to segregate management and application traffic in
 ![PrivateEC2](screenshots/PrivateEC2.png)
   
 - Tested ssh into private instance from bastion host and only one IP was able to connect to private instance
-## Testing of ssh into private instance
+  ## Testing of ssh into private instance
 
 ![sshToPrivate](screenshots/ssh-IP1.png)
 
@@ -101,5 +101,5 @@ The successful display of the sample web page confirmed that:
 - Security group rules allowed the intended cross-VPC communication.
 - Instances in separate VPCs could securely communicate over private networking.
 
-## Successful upload to S3
+## Apache page
   ![Testindex](screenshots/Web.png)
