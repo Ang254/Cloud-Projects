@@ -12,7 +12,7 @@ The objective was to make application servers accessible to the internet through
 
 ## Architecture Diagram
 
-![Architecture Diagram](screenshots/Arch D.png)
+![Architecture Diagram](screenshots/ArchD.png)
 
 ---
 
